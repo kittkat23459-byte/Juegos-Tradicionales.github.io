@@ -1,0 +1,209 @@
+/* =====================================================
+   RESET Y ESTILOS GENERALES
+   ===================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Gradiente con los 3 colores: rosa mexicano, azul y amarillo */
+    background: linear-gradient(135deg, #E5007E 0%, #0066B3 50%, #FFC72C 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+/* =====================================================
+   CONTENEDOR PRINCIPAL
+   ===================================================== */
+.contenedor-principal {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* =====================================================
+   TÍTULO PRINCIPAL
+   ===================================================== */
+.titulo-principal {
+    text-align: center;
+    font-size: 3.2rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 800;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+.subtitulo {
+    text-align: center;
+    color: #FFC72C;
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+    font-weight: 600;
+}
+
+/* =====================================================
+   RECUADRO CENTRAL
+   ===================================================== */
+.recuadro-central {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    border-top: 8px solid #E5007E;
+    border-bottom: 8px solid #FFC72C;
+    margin-bottom: 40px;
+}
+
+/* =====================================================
+   BLOQUE DE CADA JUEGO
+   ===================================================== */
+.juego-bloque {
+    margin-bottom: 35px;
+    padding-bottom: 25px;
+    border-bottom: 2px dashed #e0e0e0;
+}
+
+.juego-bloque:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.juego-bloque h2 {
+    color: #0066B3;
+    font-size: 1.7rem;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #FFC72C;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icono {
+    font-size: 1.8rem;
+    background-color: #E5007E;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(229, 0, 126, 0.3);
+}
+
+/* =====================================================
+   LISTA DE TRUCOS
+   ===================================================== */
+.juego-bloque ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.juego-bloque ul li {
+    position: relative;
+    padding: 10px 0 10px 32px;
+    line-height: 1.6;
+    color: #444;
+    font-size: 1.02rem;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.juego-bloque ul li:last-child {
+    border-bottom: none;
+}
+
+.juego-bloque ul li::before {
+    content: "★";
+    color: #FFC72C;
+    font-size: 1.2rem;
+    position: absolute;
+    left: 5px;
+    top: 9px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.juego-bloque ul li strong {
+    color: #E5007E;
+    font-weight: 700;
+}
+
+/* =====================================================
+   BOTÓN REGRESAR
+   ===================================================== */
+.contenedor-boton {
+    text-align: center;
+    padding: 10px 0 40px 0;
+}
+
+.boton-regresar {
+    display: inline-block;
+    background-color: #0066B3;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 15px 50px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    border: 3px solid #FFC72C;
+}
+
+.boton-regresar:hover {
+    background-color: #E5007E;
+    border-color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+@media (max-width: 768px) {
+    .titulo-principal {
+        font-size: 2rem;
+        letter-spacing: 2px;
+    }
+
+    .subtitulo {
+        font-size: 1rem;
+    }
+
+    .recuadro-central {
+        padding: 25px 20px;
+        border-top-width: 6px;
+        border-bottom-width: 6px;
+    }
+
+    .juego-bloque h2 {
+        font-size: 1.35rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .icono {
+        width: 40px;
+        height: 40px;
+        font-size: 1.4rem;
+    }
+
+    .juego-bloque ul li {
+        font-size: 0.95rem;
+        padding-left: 28px;
+    }
+
+    .boton-regresar {
+        padding: 12px 35px;
+        font-size: 1rem;
+    }
+}

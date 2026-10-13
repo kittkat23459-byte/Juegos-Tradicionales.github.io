@@ -1,0 +1,274 @@
+/* --- Estilos Generales --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0f740d;
+    color: #333;
+    padding: 0; /* Quitamos padding para que la barra superior toque los bordes */
+}
+
+.contenedor-principal {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* =====================================================
+   BARRA SUPERIOR CON EL TÍTULO
+   Ocupa todo el ancho y está pegada hasta arriba
+   ===================================================== */
+.barra-titulo {
+    width: 100%;
+    background: linear-gradient(135deg, #ed1b1b, #8a0808);
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.barra-titulo h1 {
+    color: #ffffff;
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 800;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+}
+
+/* =====================================================
+   SECCIÓN DE DATOS IMPORTANTES (CENTRO)
+   Recuadro central con espacio a los lados para figuras
+   ===================================================== */
+.seccion-datos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 30px;
+    gap: 20px;
+}
+
+/* Recuadro central */
+.recuadro-datos {
+    flex: 1;
+    max-width: 700px; /* No ocupa todo el ancho, deja espacio a los lados */
+    margin: 0 auto;
+    background-color: #dfebe2;
+    border-radius: 15px;
+    padding: 30px 40px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-top: 5px solid #783705;
+}
+
+.recuadro-datos h2 {
+    color: #502c2c;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.recuadro-datos p {
+    line-height: 1.6;
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.recuadro-datos ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.recuadro-datos ul li {
+    background-color: #f4f4f9;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    color: #502c2c;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* =====================================================
+   FIGURAS DECORATIVAS A LOS LADOS
+   ===================================================== */
+.figuras-lado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100px;
+    flex-shrink: 0;
+}
+
+.figura {
+    font-size: 2.5rem;
+    color: #ffffff;
+    display: inline-block;
+    animation: flotar 3s ease-in-out infinite;
+}
+
+/* Animación suave para las figuras */
+@keyframes flotar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Pequeño retardo en cada figura para efecto escalonado */
+.figura:nth-child(2) { animation-delay: 0.5s; }
+.figura:nth-child(3) { animation-delay: 1s; }
+.figura:nth-child(4) { animation-delay: 1.5s; }
+
+/* =====================================================
+   SECCIÓN DE LOS RECUADROS DE CONTENIDO
+   ===================================================== */
+.seccion-recursos {
+    display: flex;
+    gap: 30px;
+    padding: 0 40px 40px 40px;
+    align-items: stretch;
+}
+
+/* Recuadro Izquierda (Grande) */
+.recuadro-izquierda {
+    flex: 2;
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.espacio-imagen {
+    width: 100%;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.espacio-imagen img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.texto-recuerdo h2 {
+    color: #a70707;
+    margin-bottom: 15px;
+    font-size: 2rem;
+}
+
+.texto-recuerdo p {
+    line-height: 1.6;
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Recuadro Derecha (Pequeño) */
+.recuadro-derecha {
+    flex: 1;
+    background-color: #e8f4f8;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-left: 5px solid #3498db;
+}
+
+.recuadro-derecha h2 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.recuadro-derecha p {
+    line-height: 1.6;
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+h2 {
+    color: #e40303;
+}
+h3 {
+    color: #dca204;
+}
+
+
+/* =====================================================
+   BOTÓN DE REGRESO
+   ===================================================== */
+.contenedor-boton {
+    text-align: center;
+    padding: 20px 20px 50px 20px;
+}
+
+.boton-regresar {
+    display: inline-block;
+    background-color: #2c3e50;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.boton-regresar:hover {
+    background-color: #34495e;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+/* =====================================================
+   RESPONSIVE (Para móviles)
+   ===================================================== */
+@media (max-width: 768px) {
+    .barra-titulo h1 {
+        font-size: 2.2rem;
+    }
+
+    .seccion-datos {
+        flex-direction: column;
+        padding: 30px 20px;
+    }
+
+    .figuras-lado {
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .figura {
+        font-size: 2rem;
+    }
+
+    .seccion-recursos {
+        flex-direction: column;
+        padding: 0 20px 30px 20px;
+    }
+
+    .recuadro-izquierda,
+    .recuadro-derecha {
+        flex: none;
+        width: 100%;
+    }
+
+    .texto-recuerdo h2 {
+        font-size: 1.6rem;
+    }
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cómo Jugar al Trompo</title>
+    <link rel="icon" href="img/earth.jpg" type="image/jpg">
+    <link rel="stylesheet" href="csses/style-juegos.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(270deg, #4b06ec, #43e79a, #da1772,#6ffdf3, #ef154f, #1f6fe7);
+            background-size: 800% 800%;
+            animation: gradientShift 10s ease infinite;
+            min-height: 100vh;
+        }
+        /* ===== JUEGO TROMPO (prefijo trompo-) ===== */
+        .trompo-caja { background: #eef4ff; border-radius: 15px; padding: 20px 18px 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); border-left: 5px solid #3498db; text-align: center; }
+        .trompo-titulo { font-size: 1.5rem; color: #2c3e50; margin-bottom: 6px; font-weight: 800; text-transform: uppercase; }
+        .trompo-subtitulo { color: #4a5568; font-weight: 500; margin-bottom: 18px; background: #dbe7f5; display: inline-block; padding: 5px 14px; border-radius: 30px; font-size: 0.85rem; }
+        .trompo-escenario { position: relative; width: 180px; height: 180px; margin: 0 auto 15px; background: radial-gradient(circle, #f5f0e6, #d9cfbd); border-radius: 50%; border: 4px solid #8b6f51; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 20px rgba(0,0,0,0.2); }
+        .trompo-figura { font-size: 5rem; transition: transform 0.1s linear; user-select: none; }
+        .trompo-figura.girando { animation: trompo-girar 0.4s linear infinite; }
+        @keyframes trompo-girar { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .trompo-barra { width: 100%; height: 18px; background: #d9cfbd; border-radius: 10px; overflow: hidden; margin-bottom: 12px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.2); }
+        .trompo-barra-interna { height: 100%; width: 100%; background: linear-gradient(90deg, #e74c3c, #f39c12, #2ecc71); transition: width 0.1s linear; }
+        .trompo-mensaje { font-size: 0.95rem; font-weight: 600; background: #dbe7f5; color: #2d241a; padding: 8px 14px; border-radius: 40px; min-height: 2.6rem; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+        .trompo-boton { background: #3498db; border: none; border-bottom: 5px solid #1f6391; font-size: 1rem; font-weight: 700; padding: 10px 24px; border-radius: 40px; color: #fff; cursor: pointer; box-shadow: 0 5px 0 #1f6391; }
+        .trompo-boton:active { transform: translateY(3px); box-shadow: 0 1px 0 #1f6391; }
+    </style>
+</head>
+<body>
+    <div class="contenedor-principal">
+        <h1 class="titulo-principal">¿Cómo Jugar al Trompo?</h1>
+        <div class="seccion-recursos">
+            <div class="recuadro-izquierda">
+                <div class="espacio-imagen"><img src="img/h.jpg"></div>
+                <div class="texto-recuerdo">
+                    <h2>¿Qué es el Trompo?</h2>
+                    <p>El trompo es un juguete tradicional de madera con forma de pera o cono invertido, con una punta metálica en la base. Se hace girar mediante una cuerda llamada "piola" que se enrolla alrededor de su cuerpo.</p>
+                    <h2>¿Cómo se Juega?</h2>
+                    <p>Primero se enrolla la piola alrededor del trompo, comenzando desde la punta hacia arriba. Se sostiene el trompo con la mano izquierda y se sujeta el extremo libre de la piola con la derecha.</p>
+                    <p>Con un movimiento rápido y firme del brazo, se lanza el trompo hacia el suelo mientras se tira de la piola. El trompo debe caer sobre su punta y girar ("bailar") el mayor tiempo posible.</p>
+                    <p>Existen varias competencias: hacerlo bailar más tiempo, levantarlo en la palma de la mano mientras gira, hacer trucos como "el picotazo", "el puente" o "la corona".</p>
+                    <h2>Reglas Básicas</h2>
+                    <ul>
+                        <li>El trompo debe girar sobre su punta, no de lado.</li>
+                        <li>No se vale empujar el trompo con la mano después de lanzarlo.</li>
+                        <li>Si el trompo cae de lado, pierdes el turno.</li>
+                        <li>En competencia, gana quien haga bailar el trompo por más tiempo.</li>
+                        <li>Los trucos deben completarse sin que el trompo deje de girar.</li>
+                    </ul>
+                    <h2>Nombres en Diferentes Países</h2>
+                    <ul>
+                        <li><strong>México:</strong> Trompo</li>
+                        <li><strong>España:</strong> Peonza o Trompo</li>
+                        <li><strong>Argentina:</strong> Trompo o Pirinola</li>
+                        <li><strong>Colombia:</strong> Trompo</li>
+                        <li><strong>Chile:</strong> Trompo</li>
+                        <li><strong>Venezuela:</strong> Trompo</li>
+                        <li><strong>Perú:</strong> Trompo o Choloque</li>
+                        <li><strong>Cuba:</strong> Trompo</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="columna-derecha">
+                <div class="recuadro-derecha">
+                    <h2>Datos Importantes</h2>
+                    <p><strong>👥 Jugadores:</strong> De 1 a 5 participantes.</p>
+                    <p><strong>⏱️ Duración:</strong> Cada ronda 1-5 min. Partida: 15-30 min.</p>
+                    <p><strong>🎯 Objetivo:</strong> Hacer bailar el trompo el mayor tiempo posible.</p>
+                    <p><strong>🧰 Materiales:</strong> Un trompo de madera con punta metálica y su piola.</p>
+                    <h2>Tips para Ganar</h2>
+                    <p><strong>• Enrolla bien la piola:</strong> Apretada y uniforme.</p>
+                    <p><strong>• Movimiento firme:</strong> Lanzamiento rápido y decidido.</p>
+                    <p><strong>• Superficie adecuada:</strong> Cemento liso o tierra dura.</p>
+                </div>
+                <div class="trompo-caja">
+                    <h2 class="trompo-titulo">🌀 Gira el Trompo</h2>
+                    <p class="trompo-subtitulo">Haz clic en el trompo para darle impulso. ¡Que no pare de girar!</p>
+                    <div class="trompo-escenario">
+                        <div class="trompo-figura" id="trompoFigura">𖦹</div>
+                    </div>
+                    <div class="trompo-barra"><div class="trompo-barra-interna" id="trompoBarra"></div></div>
+                    <div class="trompo-mensaje" id="trompoMensaje">¡Haz clic para lanzar el trompo!</div>
+                    <button class="trompo-boton" id="trompoReset">🔄 Reiniciar</button>
+                </div>
+            </div>
+        </div>
+        <div class="contenedor-boton"><a href="jugar.html" class="boton-regresar">Atrás</a></div>
+    </div>
+    <script>
+    (function(){
+        const fig=document.getElementById('trompoFigura'),barra=document.getElementById('trompoBarra'),msg=document.getElementById('trompoMensaje'),reset=document.getElementById('trompoReset');
+        let energia=100,intervalo=null,jugando=false,mejorTiempo=0,tiempoActual=0;
+        function actualizar(){barra.style.width=energia+'%';
+            if(energia<=0){detener();msg.textContent='💥 ¡El trompo se cayó! Puntos: '+Math.floor(tiempoActual/10);}
+        }
+        function detener(){if(intervalo){clearInterval(intervalo);intervalo=null;}jugando=false;fig.classList.remove('girando');}
+        function iniciar(){
+            if(jugando)return;
+            jugando=true;energia=100;tiempoActual=0;fig.classList.add('girando');msg.textContent='🌀 ¡Girando! Haz clic para darle más energía';
+            intervalo=setInterval(()=>{
+                if(!jugando)return;
+                energia-=0.6;tiempoActual++;
+                if(energia<0)energia=0;
+                actualizar();
+            },50);
+        }
+        fig.addEventListener('click',()=>{
+            if(!jugando){iniciar();}
+            else{energia=Math.min(100,energia+18);msg.textContent='💪 ¡Impulso! Energía: '+Math.floor(energia)+'%';}
+        });
+        reset.addEventListener('click',()=>{detener();energia=100;tiempoActual=0;actualizar();msg.textContent='¡Haz clic para lanzar el trompo!';fig.style.transform='rotate(0deg)';});
+        actualizar();
+    })();
+    </script>
+</body>
+</html>

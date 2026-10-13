@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cómo Jugar a los Juegos Dinámicos</title>
+    <link rel="icon" href="img/earth.jpg" type="image/jpg">
+    <link rel="stylesheet" href="csses/style-juegos.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(270deg, #c5042e, #22d407, #c9e9eb,#6f82fd, #3c79d5, #1fe783);
+            background-size: 800% 800%;
+            animation: gradientShift 10s ease infinite;
+            min-height: 100vh;
+        }
+        /* ===== JUEGO DINÁMICO (prefijo dinamico-) ===== */
+        .dinamico-caja { background: #fff5e6; border-radius: 15px; padding: 20px 18px 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); border-left: 5px solid #e67e22; text-align: center; }
+        .dinamico-titulo { font-size: 1.5rem; color: #2c3e50; margin-bottom: 6px; font-weight: 800; text-transform: uppercase; }
+        .dinamico-subtitulo { color: #5e4b36; font-weight: 500; margin-bottom: 18px; background: #f5e0c3; display: inline-block; padding: 5px 14px; border-radius: 30px; font-size: 0.85rem; }
+        .dinamico-escenario { position: relative; width: 100%; height: 160px; background: #fdf2e0; border-radius: 12px; border: 3px solid #e0c9a6; margin-bottom: 12px; overflow: hidden; cursor: crosshair; }
+        .dinamico-blanco { position: absolute; width: 44px; height: 44px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, #ff6b6b, #c0392b); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; font-size: 1rem; cursor: pointer; user-select: none; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: transform 0.1s; }
+        .dinamico-blanco:active { transform: scale(0.85); }
+        .dinamico-marcador { display: flex; justify-content: space-around; margin-bottom: 12px; }
+        .dinamico-marcador div { background: #f5e0c3; padding: 6px 14px; border-radius: 20px; font-weight: 700; color: #5e4b36; font-size: 0.95rem; }
+        .dinamico-mensaje { font-size: 0.95rem; font-weight: 600; background: #f5e0c3; color: #2d241a; padding: 8px 14px; border-radius: 40px; min-height: 2.6rem; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+        .dinamico-boton { background: #e67e22; border: none; border-bottom: 5px solid #a85a14; font-size: 1rem; font-weight: 700; padding: 10px 24px; border-radius: 40px; color: #fff; cursor: pointer; box-shadow: 0 5px 0 #a85a14; }
+        .dinamico-boton:active { transform: translateY(3px); box-shadow: 0 1px 0 #a85a14; }
+    </style>
+</head>
+<body>
+    <div class="contenedor-principal">
+        <h1 class="titulo-principal">Juegos Dinámicos</h1>
+        <div class="seccion-recursos">
+            <div class="recuadro-izquierda">
+                <div class="espacio-imagen"><img src="img/j.jpg" alt="Niños corriendo y jugando"></div>
+                <div class="texto-recuerdo">
+                    <h2>¿Qué son los Juegos Dinámicos?</h2>
+                    <p>Los juegos dinámicos son actividades físicas grupales que implican correr, perseguir, esconderse y reaccionar rápidamente. A diferencia de los juegos de mesa, aquí el cuerpo está en movimiento constante.</p>
+                    <p>En esta sección encontrarás cuatro de los juegos dinámicos más populares: Policías y Ladrones, Las Escondidas, Las Atrapadas y Congelados.</p>
+                    <h2>Policías y Ladrones</h2>
+                    <p>Se dividen los jugadores en dos equipos: policías y ladrones. Los ladrones tienen un tiempo para esconderse mientras los policías cuentan hasta 30. Luego, los policías salen a perseguir a los ladrones.</p>
+                    <p>Los ladrones libres pueden rescatar a sus compañeros tocándolos en la cárcel. El juego termina cuando todos los ladrones están presos o cuando se acaba el tiempo acordado.</p>
+                    <h2>Las Escondidas</h2>
+                    <p>Un jugador es el "que se la queda" y debe contar hasta 20 o 30 con los ojos cerrados. Mientras cuenta, los demás se esconden. Al terminar, grita "¡Ya voy!" y sale a buscar a los escondidos.</p>
+                    <p>Cuando encuentra a alguien, debe correr de vuelta a la "base" y gritar su nombre. Si el escondido llega antes a la base, se salva.</p>
+                    <h2>Las Atrapadas</h2>
+                    <p>Un jugador es "el que trae" y debe perseguir a los demás para tocar a alguien. Cuando toca a un jugador, ese pasa a ser el nuevo "que trae".</p>
+                    <p>Una variante muy popular es "la roña congelada" o "congelados": cuando alguien es tocado, se queda congelado hasta que un compañero lo descongele.</p>
+                    <h2>Congelados</h2>
+                    <p>Es una variante de las atrapadas. Un jugador es "el que congela" y debe tocar a los demás. Cuando toca a alguien, ese jugador queda congelado en el lugar.</p>
+                    <p>Los jugadores que aún están libres pueden descongelar a sus compañeros tocándolos. El juego termina cuando todos están congelados.</p>
+                    <h2>Reglas Generales</h2>
+                    <ul>
+                        <li>Nadie puede salir del área de juego delimitada.</li>
+                        <li>No se vale empujar, jalar o golpear a los compañeros.</li>
+                        <li>Los toques deben ser suaves, solo para marcar que fue atrapado.</li>
+                        <li>Si alguien hace trampa, se le puede poner un castigo o eliminarlo.</li>
+                        <li>Las reglas específicas se acuerdan antes de empezar cada juego.</li>
+                    </ul>
+                    <h2>Nombres en Diferentes Países</h2>
+                    <ul>
+                        <li><strong>México:</strong> Atrapadas, Escondidas, Congelados</li>
+                        <li><strong>España:</strong> Pilla-Pilla, Escondite, Congelado</li>
+                        <li><strong>Argentina:</strong> Mancha, Escondidas, Congelados</li>
+                        <li><strong>Colombia:</strong> La Roña, Escondidas, Congelados</li>
+                        <li><strong>Chile:</strong> Pillarse, Escondidas, Congelados</li>
+                        <li><strong>Venezuela:</strong> La Roña, Escondidas, Congelados</li>
+                        <li><strong>Perú:</strong> Las Atrapadas, Escondidas, Congelados</li>
+                        <li><strong>Cuba:</strong> La Candela, Escondidas, Congelados</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="columna-derecha">
+                <div class="recuadro-derecha">
+                    <h2>Datos Importantes</h2>
+                    <p><strong>👥 Jugadores:</strong> De 4 a 20 participantes.</p>
+                    <p><strong>⏱️ Duración:</strong> Cada ronda 5-15 min. Sesión: 30-60 min.</p>
+                    <p><strong>🎯 Objetivo:</strong> Depende del juego: atrapar, esconderse o congelar.</p>
+                    <p><strong>🧰 Materiales:</strong> Ninguno especial. Solo espacio amplio.</p>
+                    <h2>Tips para Ganar</h2>
+                    <p><strong>• Lee el lenguaje corporal:</strong> Anticipa movimientos.</p>
+                    <p><strong>• Trabaja en equipo:</strong> La cooperación es clave.</p>
+                    <p><strong>• Aprovecha el terreno:</strong> Usa obstáculos y esquinas.</p>
+                </div>
+                <div class="dinamico-caja">
+                    <h2 class="dinamico-titulo">🏃 Atrapa al Punto</h2>
+                    <p class="dinamico-subtitulo">Haz clic en los círculos rojos antes de que desaparezcan. ¡Tienes 20 segundos!</p>
+                    <div class="dinamico-marcador">
+                        <div>⏱️ <span id="dinamicoTiempo">20</span>s</div>
+                        <div>🎯 <span id="dinamicoPuntos">0</span> pts</div>
+                    </div>
+                    <div class="dinamico-escenario" id="dinamicoEscenario"></div>
+                    <div class="dinamico-mensaje" id="dinamicoMensaje">¡Pulsa iniciar para jugar!</div>
+                    <button class="dinamico-boton" id="dinamicoIniciar">▶ Iniciar</button>
+                </div>
+            </div>
+        </div>
+        <div class="contenedor-boton"><a href="jugar.html" class="boton-regresar">Atrás</a></div>
+    </div>
+    <script>
+    (function(){
+        const esc=document.getElementById('dinamicoEscenario'),msg=document.getElementById('dinamicoMensaje'),tiempoEl=document.getElementById('dinamicoTiempo'),puntosEl=document.getElementById('dinamicoPuntos'),btn=document.getElementById('dinamicoIniciar');
+        let jugando=false,tiempo=20,puntos=0,intervalo=null,spawn=null;
+        function crearBlanco(){
+            if(!jugando)return;
+            const b=document.createElement('div');b.className='dinamico-blanco';b.textContent='🎯';
+            const maxX=esc.clientWidth-50,maxY=esc.clientHeight-50;
+            b.style.left=Math.random()*maxX+'px';b.style.top=Math.random()*maxY+'px';
+            b.addEventListener('click',()=>{if(!jugando)return;puntos++;puntosEl.textContent=puntos;b.remove();});
+            esc.appendChild(b);
+            setTimeout(()=>{if(b.parentNode)b.remove();},900);
+        }
+        function iniciar(){
+            if(jugando)return;jugando=true;tiempo=20;puntos=0;tiempoEl.textContent=tiempo;puntosEl.textContent=puntos;msg.textContent='¡Atrapa los círculos!';
+            esc.innerHTML='';crearBlanco();
+            spawn=setInterval(crearBlanco,700);
+            intervalo=setInterval(()=>{tiempo--;tiempoEl.textContent=tiempo;
+                if(tiempo<=0){detener();msg.textContent='⏰ ¡Tiempo! Puntos: '+puntos;}
+            },1000);
+        }
+        function detener(){jugando=false;clearInterval(intervalo);clearInterval(spawn);esc.innerHTML='';}
+        btn.addEventListener('click',()=>{detener();iniciar();});
+    })();
+    </script>
+</body>
+</html>

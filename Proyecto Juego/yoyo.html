@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cómo Jugar al Yoyo</title>
+    <link rel="icon" href="img/earth.jpg" type="image/jpg">
+    <link rel="stylesheet" href="csses/style-juegos.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(270deg, #ec065e, #e743bb, #b23eaa,#fd6fec, #af3cd5, #891fe7);
+            background-size: 800% 800%;
+            animation: gradientShift 10s ease infinite;
+            min-height: 100vh;
+        }
+        /* ===== JUEGO YOYO (prefijo yoyo-) ===== */
+        .yoyo-caja { background: #fdf0f5; border-radius: 15px; padding: 20px 18px 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); border-left: 5px solid #e91e63; text-align: center; }
+        .yoyo-titulo { font-size: 1.5rem; color: #2c3e50; margin-bottom: 6px; font-weight: 800; text-transform: uppercase; }
+        .yoyo-subtitulo { color: #4a5568; font-weight: 500; margin-bottom: 18px; background: #f5d0e0; display: inline-block; padding: 5px 14px; border-radius: 30px; font-size: 0.85rem; }
+        .yoyo-escenario { position: relative; width: 100%; height: 160px; background: #fce4ec; border-radius: 12px; border: 3px solid #f0b0c8; margin-bottom: 12px; overflow: hidden; }
+        .yoyo-figura { position: absolute; font-size: 3rem; left: 50%; transform: translateX(-50%); top: 20px; transition: top 0.3s ease; }
+        .yoyo-secuencia { display: flex; justify-content: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+        .yoyo-paso { width: 44px; height: 44px; border-radius: 50%; background: #f5d0e0; border: 3px solid #e91e63; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #e91e63; font-size: 1.1rem; transition: all 0.2s; }
+        .yoyo-paso.activo { background: #e91e63; color: #fff; transform: scale(1.15); }
+        .yoyo-paso.completado { background: #4caf50; border-color: #2e7d32; color: #fff; }
+        .yoyo-mensaje { font-size: 0.95rem; font-weight: 600; background: #f5d0e0; color: #2d241a; padding: 8px 14px; border-radius: 40px; min-height: 2.6rem; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+        .yoyo-botones { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+        .yoyo-boton { background: #e91e63; border: none; border-bottom: 5px solid #a01045; font-size: 0.95rem; font-weight: 700; padding: 10px 18px; border-radius: 40px; color: #fff; cursor: pointer; box-shadow: 0 5px 0 #a01045; }
+        .yoyo-boton:active { transform: translateY(3px); box-shadow: 0 1px 0 #a01045; }
+        .yoyo-boton.secundario { background: #95a5a6; border-bottom-color: #5d6d6e; box-shadow: 0 5px 0 #5d6d6e; }
+    </style>
+</head>
+<body>
+    <div class="contenedor-principal">
+        <h1 class="titulo-principal">¿Cómo Jugar al Yoyo?</h1>
+        <div class="seccion-recursos">
+            <div class="recuadro-izquierda">
+                <div class="espacio-imagen"><img src="img/f.jpg"></div>
+                <div class="texto-recuerdo">
+                    <h2>¿Qué es el Yoyo?</h2>
+                    <p>El yoyo es un juguete formado por dos discos unidos por un eje central, con una cuerda enrollada alrededor. Se hace subir y bajar mediante movimientos de la muñeca.</p>
+                    <h2>¿Cómo se Juega?</h2>
+                    <p>Para empezar, se enrolla la cuerda alrededor del eje del yoyo y se ajusta el lazo al dedo medio de la mano dominante. Se sostiene el yoyo con la palma hacia arriba y se lanza hacia abajo con un movimiento suave de muñeca.</p>
+                    <p>Cuando el yoyo llega al final de la cuerda, se da un tirón seco hacia arriba para que suba de nuevo a la mano. Este es el movimiento básico llamado "dormir" o "lanzar y regresar".</p>
+                    <p>A partir de ahí se pueden aprender trucos más complejos: "el perrito", "el columpio", "la vuelta al mundo", "caminar el perro", "el molino", "la cuna" y muchos más.</p>
+                    <h2>Reglas Básicas</h2>
+                    <ul>
+                        <li>El yoyo debe subir y bajar por su propia inercia, no con la mano.</li>
+                        <li>No se vale enredar la cuerda a propósito para hacer trampa.</li>
+                        <li>En competencia, gana quien complete más trucos sin fallar.</li>
+                        <li>Si el yoyo se enreda, debes desenredarlo tú mismo.</li>
+                        <li>Los trucos deben ejecutarse de forma limpia y controlada.</li>
+                    </ul>
+                    <h2>Nombres en Diferentes Países</h2>
+                    <ul>
+                        <li><strong>México:</strong> Yoyo</li>
+                        <li><strong>España:</strong> Yoyó</li>
+                        <li><strong>Argentina:</strong> Yoyó</li>
+                        <li><strong>Colombia:</strong> Yoyo</li>
+                        <li><strong>Chile:</strong> Yoyo</li>
+                        <li><strong>Venezuela:</strong> Yoyo</li>
+                        <li><strong>Perú:</strong> Yoyo</li>
+                        <li><strong>Cuba:</strong> Yoyo</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="columna-derecha">
+                <div class="recuadro-derecha">
+                    <h2>Datos Importantes</h2>
+                    <p><strong>👥 Jugadores:</strong> De 1 a 4 participantes.</p>
+                    <p><strong>⏱️ Duración:</strong> Cada truco segundos. Sesión: 20-40 min.</p>
+                    <p><strong>🎯 Objetivo:</strong> Dominar el movimiento básico y aprender trucos.</p>
+                    <p><strong>🧰 Materiales:</strong> Un yoyo con cuerda a la altura del ombligo.</p>
+                    <h2>Tips para Ganar</h2>
+                    <p><strong>• Ajusta la cuerda:</strong> Debe llegar al ombligo.</p>
+                    <p><strong>• Muñeca relajada:</strong> El movimiento sale de la muñeca.</p>
+                    <p><strong>• Paciencia:</strong> Cada truco requiere muchos intentos.</p>
+                </div>
+                <div class="yoyo-caja">
+                    <h2 class="yoyo-titulo">🪀 Trucos de Yoyo</h2>
+                    <p class="yoyo-subtitulo">Sigue la secuencia: haz clic en los números en orden.</p>
+                    <div class="yoyo-escenario">
+                        <div class="yoyo-figura" id="yoyoFigura">🪀</div>
+                    </div>
+                    <div class="yoyo-secuencia" id="yoyoSecuencia"></div>
+                    <div class="yoyo-mensaje" id="yoyoMensaje">¡Pulsa Iniciar para comenzar!</div>
+                    <div class="yoyo-botones">
+                        <button class="yoyo-boton" id="yoyoIniciar">▶ Iniciar</button>
+                        <button class="yoyo-boton secundario" id="yoyoReset">🔄 Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contenedor-boton"><a href="jugar.html" class="boton-regresar">Atrás</a></div>
+    </div>
+    <script>
+    (function(){
+        const secEl=document.getElementById('yoyoSecuencia'),msg=document.getElementById('yoyoMensaje'),fig=document.getElementById('yoyoFigura'),btnIniciar=document.getElementById('yoyoIniciar'),btnReset=document.getElementById('yoyoReset');
+        const secuencia=[1,2,3,4,5,6];let idx=0,jugando=false;
+        function build(){
+            secEl.innerHTML='';secuencia.forEach((n,i)=>{const d=document.createElement('div');d.className='yoyo-paso';d.textContent=n;d.dataset.idx=i;secEl.appendChild(d);});
+            idx=0;actualizar();
+        }
+        function actualizar(){secEl.querySelectorAll('.yoyo-paso').forEach((p,i)=>{p.classList.remove('activo','completado');if(i<idx)p.classList.add('completado');if(i===idx)p.classList.add('activo');});}
+        function iniciar(){jugando=true;idx=0;actualizar();msg.textContent='¡Haz clic en el paso 1!';fig.style.top='20px';}
+        secEl.addEventListener('click',(e)=>{
+            if(!jugando)return;
+            const paso=e.target.closest('.yoyo-paso');if(!paso)return;
+            const i=parseInt(paso.dataset.idx);
+            if(i===idx){
+                idx++;actualizar();fig.style.top=(20+idx*18)+'px';
+                if(idx===secuencia.length){jugando=false;msg.textContent='🎉 ¡Completaste todos los trucos!';}
+                else msg.textContent='✅ ¡Bien! Ahora el paso '+(idx+1);
+            }else{msg.textContent='❌ Ese no es el paso. Toca el '+(idx+1);fig.style.top='20px';}
+        });
+        btnIniciar.addEventListener('click',iniciar);
+        btnReset.addEventListener('click',()=>{jugando=false;build();msg.textContent='¡Pulsa Iniciar para comenzar!';fig.style.top='20px';});
+        build();
+    })();
+    </script>
+</body>
+</html>

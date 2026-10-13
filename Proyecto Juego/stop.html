@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cómo Jugar a Stop</title>
+    <link rel="icon" href="img/earth.jpg" type="image/jpg">
+    <link rel="stylesheet" href="csses/style-juegos.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(270deg, #06ecb2, #4390e7, #3eb2a1,#fd976f, #d53c9a, #e71f1f);
+            background-size: 800% 800%;
+            animation: gradientShift 10s ease infinite;
+            min-height: 100vh;
+        }
+        /* ===== JUEGO STOP (prefijo stop-) ===== */
+        .stop-caja { background: #eefaf8; border-radius: 15px; padding: 20px 18px 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); border-left: 5px solid #16a085; text-align: center; }
+        .stop-titulo { font-size: 1.5rem; color: #2c3e50; margin-bottom: 6px; font-weight: 800; text-transform: uppercase; }
+        .stop-subtitulo { color: #4a5568; font-weight: 500; margin-bottom: 18px; background: #c8ede6; display: inline-block; padding: 5px 14px; border-radius: 30px; font-size: 0.85rem; }
+        .stop-letra { font-size: 2.5rem; font-weight: 800; color: #16a085; margin-bottom: 10px; }
+        .stop-categorias { display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 12px; }
+        .stop-campo { display: flex; align-items: center; gap: 8px; }
+        .stop-campo label { font-weight: 700; color: #2c3e50; font-size: 0.9rem; min-width: 70px; text-align: left; }
+        .stop-campo input { flex: 1; padding: 8px 12px; border: 2px solid #a8d5cc; border-radius: 10px; font-size: 0.95rem; outline: none; }
+        .stop-campo input:focus { border-color: #16a085; }
+        .stop-mensaje { font-size: 0.95rem; font-weight: 600; background: #c8ede6; color: #2d241a; padding: 8px 14px; border-radius: 40px; min-height: 2.6rem; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+        .stop-botones { display: flex; gap: 8px; justify-content: center; }
+        .stop-boton { background: #16a085; border: none; border-bottom: 5px solid #0e6655; font-size: 0.95rem; font-weight: 700; padding: 10px 20px; border-radius: 40px; color: #fff; cursor: pointer; box-shadow: 0 5px 0 #0e6655; }
+        .stop-boton:active { transform: translateY(3px); box-shadow: 0 1px 0 #0e6655; }
+        .stop-boton.secundario { background: #95a5a6; border-bottom-color: #5d6d6e; box-shadow: 0 5px 0 #5d6d6e; }
+    </style>
+</head>
+<body>
+    <div class="contenedor-principal">
+        <h1 class="titulo-principal">¿Cómo Jugar a Stop?</h1>
+        <div class="seccion-recursos">
+            <div class="recuadro-izquierda">
+                <div class="espacio-imagen"><img src="img/g.jpg"></div>
+                <div class="texto-recuerdo">
+                    <h2>¿Qué es Stop?</h2>
+                    <p>Stop, también conocido como "¡Basta!", "Tutti Frutti" o "Ensalada Rusa", es un juego de lápiz y papel que combina velocidad mental, vocabulario y reflejos.</p>
+                    <h2>¿Cómo se Juega?</h2>
+                    <p>Cada jugador dibuja en su hoja una tabla con las categorías acordadas: Nombre, Apellido, País o Ciudad, Fruta o Comida, Animal, Cosa u Objeto, Color, y una columna final llamada "Stop".</p>
+                    <p>Se sortea la letra inicial de la ronda. Cuando todos tienen la letra, gritan "¡Ya!" y comienzan a escribir palabras que empiecen con esa letra en cada categoría.</p>
+                    <p>El primero que termina todas las columnas grita "¡Stop!" y todos deben dejar de escribir. Se comparan las respuestas: las palabras únicas valen 10 puntos, las repetidas valen 5, y las vacías 0.</p>
+                    <h2>Reglas Básicas</h2>
+                    <ul>
+                        <li>Solo se puede gritar "¡Stop!" cuando todas tus casillas estén llenas.</li>
+                        <li>No se vale copiar la respuesta de otro jugador.</li>
+                        <li>Si un jugador repite palabra con otro, ambos ganan 5 puntos.</li>
+                        <li>Las palabras inventadas o mal escritas no cuentan.</li>
+                        <li>La letra no puede repetirse dos rondas seguidas.</li>
+                    </ul>
+                    <h2>Nombres en Diferentes Países</h2>
+                    <ul>
+                        <li><strong>México:</strong> Stop o Basta</li>
+                        <li><strong>España:</strong> Stop o ¡Basta!</li>
+                        <li><strong>Argentina:</strong> Tutti Frutti</li>
+                        <li><strong>Colombia:</strong> Stop</li>
+                        <li><strong>Chile:</strong> Basta</li>
+                        <li><strong>Venezuela:</strong> Stop</li>
+                        <li><strong>Perú:</strong> ¡Basta!</li>
+                        <li><strong>Cuba:</strong> Ensalada Rusa</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="columna-derecha">
+                <div class="recuadro-derecha">
+                    <h2>Datos Importantes</h2>
+                    <p><strong>👥 Jugadores:</strong> De 2 a 6 participantes.</p>
+                    <p><strong>⏱️ Duración:</strong> Cada ronda 1-3 min. Partida: 15-20 min.</p>
+                    <p><strong>🎯 Objetivo:</strong> Acumular puntos con palabras únicas.</p>
+                    <p><strong>🧰 Materiales:</strong> Hoja, lápiz y un dado o abecedario.</p>
+                    <h2>Tips para Ganar</h2>
+                    <p><strong>• Vocabulario amplio:</strong> Memoriza palabras raras.</p>
+                    <p><strong>• Rapidez mental:</strong> Empieza por lo que dominas.</p>
+                    <p><strong>• Letras difíciles:</strong> Practica con W, X, K o Ñ.</p>
+                </div>
+                <div class="stop-caja">
+                    <h2 class="stop-titulo">✍️ Stop de Letras</h2>
+                    <p class="stop-subtitulo">Escribe una palabra por categoría que empiece con la letra indicada.</p>
+                    <div class="stop-letra" id="stopLetra">A</div>
+                    <div class="stop-categorias">
+                        <div class="stop-campo"><label>Nombre</label><input type="text" id="stopNombre" placeholder="Ej: Ana"></div>
+                        <div class="stop-campo"><label>Animal</label><input type="text" id="stopAnimal" placeholder="Ej: Ardilla"></div>
+                        <div class="stop-campo"><label>Comida</label><input type="text" id="stopComida" placeholder="Ej: Arroz"></div>
+                        <div class="stop-campo"><label>País</label><input type="text" id="stopPais" placeholder="Ej: Argentina"></div>
+                    </div>
+                    <div class="stop-mensaje" id="stopMensaje">¡Escribe y pulsa Comprobar!</div>
+                    <div class="stop-botones">
+                        <button class="stop-boton" id="stopComprobar">✅ Comprobar</button>
+                        <button class="stop-boton secundario" id="stopNueva">🔄 Nueva letra</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contenedor-boton"><a href="jugar.html" class="boton-regresar">Atrás</a></div>
+    </div>
+    <script>
+    (function(){
+        const letraEl=document.getElementById('stopLetra'),msg=document.getElementById('stopMensaje');
+        const campos=['Nombre','Animal','Comida','Pais'];
+        const inputs={Nombre:document.getElementById('stopNombre'),Animal:document.getElementById('stopAnimal'),Comida:document.getElementById('stopComida'),Pais:document.getElementById('stopPais')};
+        const letras='ABCDEFGHIJLMNOPQRSTUVZ';
+        let letra='A';
+        function nuevaLetra(){letra=letras[Math.floor(Math.random()*letras.length)];letraEl.textContent=letra;msg.textContent='¡Escribe palabras con '+letra+'!';campos.forEach(c=>inputs[c].value='');}
+        document.getElementById('stopComprobar').addEventListener('click',()=>{
+            let aciertos=0,errores=[];
+            campos.forEach(c=>{const v=inputs[c].value.trim();if(v&&v.toUpperCase().startsWith(letra))aciertos++;else errores.push(c);});
+            if(aciertos===4)msg.textContent='🎉 ¡Excelente! Todas correctas.';
+            else msg.textContent='✅ '+aciertos+'/4 correctas. Revisa: '+errores.join(', ');
+        });
+        document.getElementById('stopNueva').addEventListener('click',nuevaLetra);
+        nuevaLetra();
+    })();
+    </script>
+</body>
+</html>

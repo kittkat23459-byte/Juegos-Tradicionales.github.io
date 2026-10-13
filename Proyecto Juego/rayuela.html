@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cómo Jugar a la Rayuela</title>
+    <link rel="icon" href="img/earth.jpg" type="image/jpg">
+    <link rel="stylesheet" href="csses/style-juegos.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Gradiente lineal con múltiples colores que se mueve de izquierda a derecha (270deg) */
+            background: linear-gradient(270deg, #ec065e, #e743bb, #b23eaa,#fd6fec, #af3cd5, #891fe7);
+            background-size: 800% 800%;  /* Hace el gradiente más grande para permitir el desplazamiento */
+            animation: gradientShift 10s ease infinite; /* Aplica la animación: 10s de duración, aceleración suave, infinita */
+            min-height: 100vh;  /* Altura mínima = 100% del viewport (pantalla visible) */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contenedor-principal">
+
+        <h1 class="titulo-principal">¿Cómo Jugar a la Rayuela?</h1>
+
+        <div class="seccion-recursos">
+            
+            <!-- ===== RECUADRO IZQUIERDA (GRANDE) ===== -->
+            <div class="recuadro-izquierda">
+                
+                <div class="espacio-imagen">
+                    <img src="img/a.jpg">
+                </div>
+                
+                <div class="texto-recuerdo">
+                    
+                    <h2>¿Qué es la Rayuela?</h2>
+                    <p>
+                        La rayuela es uno de los juegos tradicionales más antiguos y extendidos del mundo. 
+                        Consiste en recorrer a saltos un diagrama numerado dibujado en el suelo, lanzando 
+                        previamente una piedra o ficha a cada casillero. Es un juego que combina precisión, 
+                        equilibrio y estrategia, y que se practica en prácticamente todos los países 
+                        con diferentes nombres y variaciones.
+                    </p>
+
+                    <h2>¿Cómo se Juega?</h2>
+                    <p>
+                        El juego comienza cuando cada jugador elige su ficha (una piedra plana, una tapa 
+                        o cualquier objeto pequeño). Se establece un orden de turnos y el primer jugador 
+                        lanza su ficha al casillero número 1.
+                    </p>
+                    <p>
+                        Si la ficha cae dentro del casillero sin tocar las líneas, el jugador salta 
+                        con un solo pie por todos los casilleros, evitando aquel donde está su ficha. 
+                        Al llegar al final, se da la vuelta y regresa saltando de la misma forma hasta 
+                        el casillero anterior al de su ficha, se agacha, la recoge y salta fuera del diagrama.
+                    </p>
+                    <p>
+                        Si logra completar el recorrido, en el siguiente turno lanzará la ficha al 
+                        casillero 2 y repetirá el proceso. Gana quien primero complete el recorrido 
+                        con todos los casilleros.
+                    </p>
+
+                    <h2>Reglas Básicas</h2>
+                    <ul>
+                        <li>Pierdes tu turno si la ficha cae sobre una línea o fuera del casillero.</li>
+                        <li>Pierdes tu turno si pisas una línea mientras saltas.</li>
+                        <li>Pierdes tu turno si apoyas los dos pies en un casillero simple.</li>
+                        <li>En los casilleros dobles (cuando hay dos juntos), puedes apoyar ambos pies.</li>
+                        <li>Si pierdes el equilibrio y tocas el suelo con la mano, pierdes el turno.</li>
+                    </ul>
+
+                    <h2>Nombres en Diferentes Países</h2>
+                    <p>
+                        Este juego recibe nombres distintos según el país donde se practique:
+                    </p>
+                    <ul>
+                        <li><strong>Argentina:</strong> Rayuela</li>
+                        <li><strong>México:</strong> Avión o Bebeleche</li>
+                        <li><strong>España:</strong> Informáculo o Rayuela</li>
+                        <li><strong>Colombia:</strong> Golosa</li>
+                        <li><strong>Chile:</strong> Luche</li>
+                        <li><strong>Venezuela:</strong> Avión o Pisé</li>
+                        <li><strong>Puerto Rico:</strong> Pelegrina</li>
+                        <li><strong>Perú:</strong> Mundo</li>
+                    </ul>
+
+                    <h2>Variantes del Juego</h2>
+                    <p>
+                        Existen varias formas de jugar a la rayuela, dependiendo de la región y 
+                        las reglas locales. Algunas variantes incluyen:
+                    </p>
+                    <ul>
+                        <li><strong>Rayuela con obstáculos:</strong> Se dibujan obstáculos en algunos casilleros que deben ser sorteados.</li>
+                        <li><strong>Rayuela con tiempo:</strong> Cada jugador tiene un límite de tiempo para completar su turno.</li>
+                        <li><strong>Rayuela cooperativa:</strong> Los jugadores trabajan juntos para completar el recorrido en el menor tiempo posible.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ===== RECUADRO DERECHA (PEQUEÑO) ===== -->
+            <div class="recuadro-derecha">
+                
+                <h2>Datos Importantes</h2>
+                
+                <p>
+                    <strong>👥 Jugadores:</strong> De 2 a 5 participantes es lo ideal. 
+                    Con más de 5, las esperas entre turnos se hacen muy largas.
+                </p>
+                
+                <p>
+                    <strong>⏱️ Duración:</strong> Una partida completa suele durar entre 
+                    10 y 20 minutos, dependiendo de cuántos jugadores haya.
+                </p>
+                
+                <p>
+                    <strong>🎯 Objetivo:</strong> Ser el primero en completar el recorrido 
+                    lanzando la ficha en todos los casilleros, del 1 al último.
+                </p>
+                
+                <p>
+                    <strong>🧰 Materiales:</strong> Solo necesitas tiza para dibujar el 
+                    diagrama y una piedra plana o ficha para cada jugador.
+                </p>
+
+                <h2>Tips para Ganar</h2>
+                <p>
+                    <strong>• Precisión al lanzar:</strong> Calcula la fuerza necesaria 
+                    para que la ficha caiga justo dentro del casillero.
+                </p>
+                <p>
+                    <strong>• Mantén el equilibrio:</strong> Salta sobre la punta del pie 
+                    y activa el abdomen para no tambalearte.
+                </p>
+                <p>
+                    <strong>• Memoriza el diagrama:</strong> Anticipa mentalmente qué pie 
+                    usarás en cada casillero antes de empezar.
+                </p>
+            </div>
+        </div>
+
+        <div class="contenedor-boton">
+            <a href="jugar.html" class="boton-regresar">Atrás</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

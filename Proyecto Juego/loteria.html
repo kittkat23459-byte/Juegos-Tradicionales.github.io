@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cómo Jugar a la Lotería</title>
+    <link rel="icon" href="img/earth.jpg" type="image/jpg">
+    <link rel="stylesheet" href="csses/style-juegos.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(270deg, #ec065e, #e743bb, #b23eaa,#fd6fec, #af3cd5, #891fe7);
+            background-size: 800% 800%;
+            animation: gradientShift 10s ease infinite;
+            min-height: 100vh;
+        }
+        /* ===== JUEGO LOTERÍA (prefijo loteria-) ===== */
+        .loteria-caja { background: #fff0f7; border-radius: 15px; padding: 20px 18px 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); border-left: 5px solid #c0392b; text-align: center; }
+        .loteria-titulo { font-size: 1.5rem; color: #2c3e50; margin-bottom: 6px; font-weight: 800; text-transform: uppercase; }
+        .loteria-subtitulo { color: #5e4b36; font-weight: 500; margin-bottom: 18px; background: #f5d6e3; display: inline-block; padding: 5px 14px; border-radius: 30px; font-size: 0.85rem; }
+        .loteria-tablero { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; max-width: 280px; margin: 0 auto 15px; }
+        .loteria-carta { aspect-ratio: 1/1; background: #f5d6e3; border: 3px solid #c0392b; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; cursor: pointer; user-select: none; transition: all 0.2s; }
+        .loteria-carta.volteada { background: #fff; transform: rotateY(0deg); }
+        .loteria-carta.oculta { background: linear-gradient(135deg, #c0392b, #e74c3c); color: transparent; }
+        .loteria-carta.oculta::after { content: '❓'; color: #fff; font-size: 1.5rem; }
+        .loteria-marcador { display: flex; justify-content: space-around; margin-bottom: 12px; }
+        .loteria-marcador div { background: #f5d6e3; padding: 6px 14px; border-radius: 20px; font-weight: 700; color: #5e4b36; font-size: 0.95rem; }
+        .loteria-mensaje { font-size: 0.95rem; font-weight: 600; background: #f5d6e3; color: #2d241a; padding: 8px 14px; border-radius: 40px; min-height: 2.6rem; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+        .loteria-boton { background: #c0392b; border: none; border-bottom: 5px solid #7a1f14; font-size: 1rem; font-weight: 700; padding: 10px 24px; border-radius: 40px; color: #fff; cursor: pointer; box-shadow: 0 5px 0 #7a1f14; }
+        .loteria-boton:active { transform: translateY(3px); box-shadow: 0 1px 0 #7a1f14; }
+    </style>
+</head>
+<body>
+    <div class="contenedor-principal">
+        <h1 class="titulo-principal">¿Cómo Jugar a la Lotería?</h1>
+        <div class="seccion-recursos">
+            <div class="recuadro-izquierda">
+                <div class="espacio-imagen"><img src="img/c.jpg"></div>
+                <div class="texto-recuerdo">
+                    <h2>¿Qué es la Lotería?</h2>
+                    <p>La Lotería es un juego de mesa tradicional mexicano similar al bingo, pero con imágenes en lugar de números. Se juega con un mazo de 54 cartas ilustradas y cada jugador tiene una plantilla o "tabla" con 16 de esas imágenes.</p>
+                    <h2>¿Cómo se Juega?</h2>
+                    <p>Un jugador hace de "gritón" o cantor y va sacando cartas al azar del mazo, anunciando cada figura con una rima o frase característica.</p>
+                    <p>Los jugadores buscan la figura mencionada en su tabla y la marcan con un frijolito. El primero que complete su tabla grita "¡Lotería!" y gana la ronda.</p>
+                    <p>En algunas variantes, se puede jugar "a línea", "a cruz" o "a tabla llena". El gritón también puede ganar si nadie completa la tabla.</p>
+                    <h2>Reglas Básicas</h2>
+                    <ul>
+                        <li>El gritón no puede ver las tablas de los jugadores.</li>
+                        <li>No se vale cantar dos veces la misma carta en una ronda.</li>
+                        <li>No se vale marcar una casilla que no haya sido cantada.</li>
+                        <li>Si dos jugadores gritan "¡Lotería!" al mismo tiempo, se revisa quién tiene la tabla correcta.</li>
+                        <li>El gritón rota entre los jugadores en cada ronda.</li>
+                    </ul>
+                    <h2>Nombres en Diferentes Países</h2>
+                    <ul>
+                        <li><strong>México:</strong> Lotería</li>
+                        <li><strong>España:</strong> Bingo (similar)</li>
+                        <li><strong>Argentina:</strong> Lotería o Bingo</li>
+                        <li><strong>Colombia:</strong> Lotería o Bingo</li>
+                        <li><strong>Chile:</strong> Lotería o Bingo</li>
+                        <li><strong>Venezuela:</strong> Lotería</li>
+                        <li><strong>Perú:</strong> Lotería</li>
+                        <li><strong>Cuba:</strong> Lotería</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="columna-derecha">
+                <div class="recuadro-derecha">
+                    <h2>Datos Importantes</h2>
+                    <p><strong>👥 Jugadores:</strong> De 2 a 20 participantes.</p>
+                    <p><strong>⏱️ Duración:</strong> Cada ronda 5-15 min. Partida: 30-60 min.</p>
+                    <p><strong>🎯 Objetivo:</strong> Completar la tabla antes que los demás.</p>
+                    <p><strong>🧰 Materiales:</strong> Mazo de 54 cartas, tablas y fichas.</p>
+                    <h2>Tips para Ganar</h2>
+                    <p><strong>• Atención total:</strong> Escucha con cuidado las rimas.</p>
+                    <p><strong>• Prepara tus fichas:</strong> Ten suficientes a la mano.</p>
+                    <p><strong>• Memoriza las rimas:</strong> Identifica rápido las figuras.</p>
+                </div>
+                <div class="loteria-caja">
+                    <h2 class="loteria-titulo">🃏 Memorama Lotería</h2>
+                    <p class="loteria-subtitulo">Encuentra los pares de cartas. ¡Memoriza su posición!</p>
+                    <div class="loteria-marcador">
+                        <div>🎯 <span id="loteriaPares">0</span>/4 pares</div>
+                        <div>🔄 <span id="loteriaIntentos">0</span> intentos</div>
+                    </div>
+                    <div class="loteria-tablero" id="loteriaTablero"></div>
+                    <div class="loteria-mensaje" id="loteriaMensaje">¡Encuentra todos los pares!</div>
+                    <button class="loteria-boton" id="loteriaReset">🔄 Reiniciar</button>
+                </div>
+            </div>
+        </div>
+        <div class="contenedor-boton"><a href="jugar.html" class="boton-regresar">Atrás</a></div>
+    </div>
+    <script>
+    (function(){
+        const tablero=document.getElementById('loteriaTablero'),msg=document.getElementById('loteriaMensaje'),paresEl=document.getElementById('loteriaPares'),intentosEl=document.getElementById('loteriaIntentos'),reset=document.getElementById('loteriaReset');
+        const iconos=['🌞','🌙','⭐','🐓','🐟','🌵','💀','🎸'];
+        let cartas=[],volteadas=[],pares=0,intentos=0,bloqueado=false;
+        function barajar(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+        function build(){
+            const seleccion=barajar([...iconos]).slice(0,4);cartas=barajar([...seleccion,...seleccion]);
+            tablero.innerHTML='';volteadas=[];pares=0;intentos=0;bloqueado=false;
+            paresEl.textContent=pares;intentosEl.textContent=intentos;msg.textContent='¡Encuentra todos los pares!';
+            cartas.forEach((ic,idx)=>{const c=document.createElement('div');c.className='loteria-carta oculta';c.dataset.icono=ic;c.dataset.idx=idx;c.addEventListener('click',()=>voltear(c));tablero.appendChild(c);});
+        }
+        function voltear(c){
+            if(bloqueado||!c.classList.contains('oculta'))return;
+            c.classList.remove('oculta');c.textContent=c.dataset.icono;volteadas.push(c);
+            if(volteadas.length===2){
+                intentos++;intentosEl.textContent=intentos;bloqueado=true;
+                if(volteadas[0].dataset.icono===volteadas[1].dataset.icono){
+                    pares++;paresEl.textContent=pares;volteadas=[];
+                    bloqueado=false;
+                    if(pares===4)msg.textContent='🎉 ¡Ganaste! Completaste todos los pares.';
+                }else{
+                    setTimeout(()=>{volteadas.forEach(v=>{v.classList.add('oculta');v.textContent='';});volteadas=[];bloqueado=false;},700);
+                }
+            }
+        }
+        reset.addEventListener('click',build);
+        build();
+    })();
+    </script>
+</body>
+</html>

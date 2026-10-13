@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cómo Jugar al Balero</title>
+    <link rel="stylesheet" href="csses/style-juegos.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Gradiente lineal con múltiples colores que se mueve de izquierda a derecha (270deg) */
+            background: linear-gradient(270deg, #b2ec06, #1370e3, #d46d2d,#6f79fd, #8ed53c, #e7e41f);
+            background-size: 800% 800%;  /* Hace el gradiente más grande para permitir el desplazamiento */
+            animation: gradientShift 10s ease infinite; /* Aplica la animación: 10s de duración, aceleración suave, infinita */
+            min-height: 100vh;  /* Altura mínima = 100% del viewport (pantalla visible) */
+        }
+
+        /* ===== JUEGO BALERO (prefijo balero-) ===== */
+        .balero-caja {
+            background: #fff8ee;
+            background-image: radial-gradient(circle at 20% 30%, #fffdf8, #f0e2cc);
+            border-radius: 15px;
+            padding: 20px 18px 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-left: 5px solid #e67e22;
+            text-align: center;
+        }
+        .balero-titulo {
+            font-size: 1.5rem; color: #2c3e50; margin-bottom: 6px;
+            font-weight: 800; text-transform: uppercase;
+        }
+        .balero-subtitulo {
+            color: #5e4b36; font-weight: 500; margin-bottom: 18px;
+            background: #f0e2cc; display: inline-block; padding: 5px 14px;
+            border-radius: 30px; font-size: 0.85rem; box-shadow: inset 0 1px 4px #c9b48f;
+        }
+        .balero-escenario {
+            position: relative;
+            width: 180px;
+            height: 220px;
+            margin: 0 auto 15px;
+            background: linear-gradient(180deg, #fdf6ea, #ecdcc2);
+            border: 4px solid #b59d7e;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.15);
+        }
+        .balero-eje {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 14px;
+            height: 110px;
+            background: linear-gradient(90deg, #8b6f51, #c9ad8b, #8b6f51);
+            border-radius: 6px 6px 3px 3px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .balero-eje::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 22px;
+            height: 22px;
+            background: radial-gradient(circle at 30% 30%, #d9c0a0, #8b6f51);
+            border-radius: 50%;
+        }
+        .balero-bola {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 20px;
+            width: 60px;
+            height: 70px;
+            background: radial-gradient(circle at 30% 30%, #f5deb3, #c9a06b 60%, #8b6f51);
+            border-radius: 50% 50% 45% 45%;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.35), inset -4px -6px 8px rgba(0,0,0,0.2);
+            transition: top 0.25s cubic-bezier(0.5, 0, 0.5, 1);
+            cursor: pointer;
+            z-index: 2;
+        }
+        .balero-bola::after {
+            content: '';
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 14px;
+            height: 14px;
+            background: #5a3e2b;
+            border-radius: 50%;
+            box-shadow: inset 0 2px 3px rgba(0,0,0,0.6);
+        }
+        .balero-bola.ensartada { top: 110px; }
+        .balero-bola.fallada {
+            top: 190px;
+            background: radial-gradient(circle at 30% 30%, #f5b3b3, #c96b6b 60%, #8b3e3e);
+        }
+        .balero-bola.lanzada { top: 10px; }
+
+        .balero-marcador {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 12px;
+        }
+        .balero-marcador div {
+            background: #f0e2cc; padding: 6px 14px; border-radius: 20px;
+            font-weight: 700; color: #5e4b36; font-size: 0.95rem;
+        }
+        .balero-mensaje {
+            font-size: 0.95rem; font-weight: 600; background: #f0e2cc;
+            color: #2d241a; padding: 8px 14px; border-radius: 40px;
+            box-shadow: inset 0 2px 6px #c9b48f; min-height: 2.6rem;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 12px;
+        }
+        .balero-boton {
+            background: #e67e22; border: none; border-bottom: 5px solid #a85a14;
+            font-size: 1rem; font-weight: 700; padding: 10px 24px;
+            border-radius: 40px; color: #fff; cursor: pointer;
+            box-shadow: 0 5px 0 #a85a14; margin: 0 4px;
+        }
+        .balero-boton:active { transform: translateY(3px); box-shadow: 0 1px 0 #a85a14; }
+        .balero-boton.secundario {
+            background: #95a5a6; border-bottom-color: #5d6d6e;
+            box-shadow: 0 5px 0 #5d6d6e;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor-principal">
+        <h1 class="titulo-principal">¿Cómo Jugar al Balero?</h1>
+
+        <div class="seccion-recursos">
+            <div class="recuadro-izquierda">
+                <div class="espacio-imagen">
+                    <img src="img/i.jpg" alt="Niños jugando al balero">
+                </div>
+                <div class="texto-recuerdo">
+
+                    <h2>¿Qué es el Balero?</h2>
+                    <p>
+                        El balero, también conocido como "bilmbo", "coca" o "trompo chino", es 
+                        un juguete tradicional formado por un mango de madera con un eje 
+                        puntiagudo y una bola o barril hueco con un orificio en el centro. El 
+                        objetivo es ensartar la bola en el eje mediante un movimiento de 
+                        balanceo.
+                    </p>
+
+                    <h2>¿Cómo se Juega?</h2>
+                    <p>
+                        Se sostiene el mango del balero con una mano y se sujeta la bola con la 
+                        otra. Se le da un suave impulso hacia arriba con la muñeca para que la 
+                        bola se eleve, y se intenta ensartarla en el eje cuando cae.
+                    </p>
+                    <p>
+                        El movimiento es una combinación de balanceo y cálculo de la inercia: 
+                        si impulsas demasiado fuerte, la bola pasa de largo; si es muy suave, 
+                        no alcanza a subir. Se necesita práctica para encontrar el punto exacto.
+                    </p>
+                    <p>
+                        Existen varias formas de jugar: "al hilo" (ensartar y dejar la bola en 
+                        el eje), "a la copa" (recibirla en la base ancha), "a la chueca" 
+                        (ensartarla de lado) y "al capirucho" (hacerla girar alrededor del eje). 
+                        Gana quien complete más variantes sin fallar.
+                    </p>
+
+                    <h2>Reglas Básicas</h2>
+                    <ul>
+                        <li>No se vale usar la segunda mano para ayudar a ensartar.</li>
+                        <li>No se vale mover el eje para atrapar la bola.</li>
+                        <li>Si la bola cae al suelo, pierdes el turno.</li>
+                        <li>En competencia, cada variante debe completarse de forma limpia.</li>
+                        <li>Si el balero golpea tus dedos, no cuenta como falta, pero debes intentarlo de nuevo.</li>
+                    </ul>
+
+                    <h2>Nombres en Diferentes Países</h2>
+                    <ul>
+                        <li><strong>México:</strong> Balero o Capirucho</li>
+                        <li><strong>España:</strong> Boliche o Balero</li>
+                        <li><strong>Argentina:</strong> Bilmbo o Balero</li>
+                        <li><strong>Colombia:</strong> Balero o Coca</li>
+                        <li><strong>Chile:</strong> Emboque o Balero</li>
+                        <li><strong>Venezuela:</strong> Balero o Boliche</li>
+                        <li><strong>Perú:</strong> Balero o Choloque</li>
+                        <li><strong>Cuba:</strong> Balero</li>
+                    </ul>
+
+                </div>
+            </div>
+
+            <!-- COLUMNA DERECHA CON EL JUEGO -->
+            <div class="columna-derecha">
+
+                <div class="recuadro-derecha">
+                    <h2>Datos Importantes</h2>
+                    <p><strong>👥 Jugadores:</strong> De 1 a 4 participantes. Es principalmente un juego individual o de reto.</p>
+                    <p><strong>⏱️ Duración:</strong> Cada intento dura segundos. Una sesión completa, 15-30 minutos.</p>
+                    <p><strong>🎯 Objetivo:</strong> Ensartar la bola en el eje la mayor cantidad de veces o completar todas las variantes.</p>
+                    <p><strong>🧰 Materiales:</strong> Un balero de madera con su bola correspondiente.</p>
+
+                    <h2>Tips para Ganar</h2>
+                    <p><strong>• Movimiento suave:</strong> No impulses con fuerza, el balero se controla con la muñeca.</p>
+                    <p><strong>• Mira el eje:</strong> Fija la vista en la punta del eje, no en la bola.</p>
+                    <p><strong>• Flexiona las rodillas:</strong> Al recibir la bola, baja ligeramente para amortiguar el impacto.</p>
+                </div>
+
+                <!-- NUEVO RECUADRO: JUEGO DEL BALERO -->
+                <div class="balero-caja">
+                    <h2 class="balero-titulo">🪀 Juego del Balero</h2>
+                    <p class="balero-subtitulo">Haz clic en la bola para lanzarla. ¡Ensártala en el eje!</p>
+
+                    <div class="balero-marcador">
+                        <div>🎯 <span id="baleroAciertos">0</span> aciertos</div>
+                        <div>❌ <span id="baleroFallos">0</span> fallos</div>
+                    </div>
+
+                    <div class="balero-escenario">
+                        <div class="balero-eje"></div>
+                        <div class="balero-bola" id="baleroBola"></div>
+                    </div>
+
+                    <div class="balero-mensaje" id="baleroMensaje">¡Haz clic en la bola para lanzarla!</div>
+
+                    <button class="balero-boton" id="baleroReset">🔄 Reiniciar</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="contenedor-boton">
+            <a href="jugar.html" class="boton-regresar">Atrás</a>
+        </div>
+    </div>
+
+    <!-- SCRIPT DEL JUEGO DEL BALERO -->
+    <script>
+    (function(){
+        const bola = document.getElementById('baleroBola');
+        const msg = document.getElementById('baleroMensaje');
+        const aciertosEl = document.getElementById('baleroAciertos');
+        const fallosEl = document.getElementById('baleroFallos');
+        const reset = document.getElementById('baleroReset');
+
+        let aciertos = 0, fallos = 0;
+        let jugando = false;
+
+        function lanzar(){
+            if (jugando) return;
+            jugando = true;
+
+            bola.classList.remove('ensartada','fallada');
+            bola.classList.add('lanzada');
+            msg.textContent = '🌀 ¡La bola está en el aire...!';
+
+            setTimeout(() => {
+                bola.classList.remove('lanzada');
+
+                // 60% de probabilidad de acertar
+                const acierta = Math.random() < 0.6;
+
+                if (acierta) {
+                    bola.classList.add('ensartada');
+                    aciertos++;
+                    aciertosEl.textContent = aciertos;
+                    msg.textContent = '✅ ¡Ensartada! ¡Buen movimiento de muñeca!';
+                } else {
+                    bola.classList.add('fallada');
+                    fallos++;
+                    fallosEl.textContent = fallos;
+                    msg.textContent = '❌ ¡Fallaste! La bola cayó al suelo.';
+                }
+
+                setTimeout(() => {
+                    bola.classList.remove('ensartada','fallada');
+                    jugando = false;
+                    msg.textContent = 'Haz clic en la bola para lanzar de nuevo.';
+                }, 900);
+            }, 500);
+        }
+
+        function reiniciar(){
+            aciertos = 0; fallos = 0;
+            aciertosEl.textContent = 0;
+            fallosEl.textContent = 0;
+            bola.classList.remove('ensartada','fallada','lanzada');
+            jugando = false;
+            msg.textContent = '¡Haz clic en la bola para lanzarla!';
+        }
+
+        bola.addEventListener('click', lanzar);
+        reset.addEventListener('click', reiniciar);
+    })();
+    </script>
+
+</body>
+</html>

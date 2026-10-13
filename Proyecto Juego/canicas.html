@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cómo Jugar a las Canicas</title>
+    <link rel="stylesheet" href="csses/style-juegos.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(270deg, #1f9dce, #dea405, #c56728,#fd6fec, #e1c50c, #1fe0e7);
+            background-size: 800% 800%;
+            animation: gradientShift 10s ease infinite;
+            min-height: 100vh;
+        }
+        /* ===== JUEGO CANICAS (prefijo canicas-) ===== */
+        .canicas-caja { background: #eef6ff; border-radius: 15px; padding: 20px 18px 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); border-left: 5px solid #2980b9; text-align: center; }
+        .canicas-titulo { font-size: 1.5rem; color: #2c3e50; margin-bottom: 6px; font-weight: 800; text-transform: uppercase; }
+        .canicas-subtitulo { color: #4a5568; font-weight: 500; margin-bottom: 18px; background: #d0e4f5; display: inline-block; padding: 5px 14px; border-radius: 30px; font-size: 0.85rem; }
+        .canicas-escenario { position: relative; width: 100%; height: 180px; background: #e8f0f8; border-radius: 12px; border: 3px solid #a8c8e8; margin-bottom: 12px; overflow: hidden; }
+        .canicas-circulo { position: absolute; width: 120px; height: 120px; border: 4px dashed #e67e22; border-radius: 50%; left: 50%; top: 50%; transform: translate(-50%,-50%); }
+        .canica { position: absolute; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; box-shadow: 0 3px 6px rgba(0,0,0,0.3); transition: transform 0.15s; }
+        .canica:hover { transform: scale(1.15); }
+        .canica.roja { background: radial-gradient(circle at 30% 30%, #ff6b6b, #c0392b); }
+        .canica.azul { background: radial-gradient(circle at 30% 30%, #6bb6ff, #2980b9); }
+        .canica.verde { background: radial-gradient(circle at 30% 30%, #6bff9e, #27ae60); }
+        .canica.amarilla { background: radial-gradient(circle at 30% 30%, #ffe66b, #f39c12); }
+        .canicas-marcador { display: flex; justify-content: space-around; margin-bottom: 12px; }
+        .canicas-marcador div { background: #d0e4f5; padding: 6px 14px; border-radius: 20px; font-weight: 700; color: #1a3a5c; font-size: 0.95rem; }
+        .canicas-mensaje { font-size: 0.95rem; font-weight: 600; background: #d0e4f5; color: #2d241a; padding: 8px 14px; border-radius: 40px; min-height: 2.6rem; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+        .canicas-boton { background: #2980b9; border: none; border-bottom: 5px solid #1a5276; font-size: 1rem; font-weight: 700; padding: 10px 24px; border-radius: 40px; color: #fff; cursor: pointer; box-shadow: 0 5px 0 #1a5276; }
+        .canicas-boton:active { transform: translateY(3px); box-shadow: 0 1px 0 #1a5276; }
+    </style>
+</head>
+<body>
+    <div class="contenedor-principal">
+        <h1 class="titulo-principal">¿Cómo Jugar a las Canicas?</h1>
+        <div class="seccion-recursos">
+            <div class="recuadro-izquierda">
+                <div class="espacio-imagen"><img src="img/d.jpg" alt="Niños jugando canicas"></div>
+                <div class="texto-recuerdo">
+                    <h2>¿Qué son las Canicas?</h2>
+                    <p>Las canicas son pequeñas esferas de vidrio, cerámica o piedra que se utilizan en un juego tradicional de puntería y estrategia. También se les conoce como "bolitas", "metras" o "marbles".</p>
+                    <h2>¿Cómo se Juega?</h2>
+                    <p>Existen muchas variantes, pero la más común es el "juego del círculo". Se dibuja un círculo en el suelo y se colocan dentro varias canicas de cada jugador.</p>
+                    <p>Desde una línea marcada a cierta distancia, cada jugador lanza su canica "tiradora" intentando sacar del círculo la mayor cantidad de canicas. Si logra sacar una, la gana y sigue tirando.</p>
+                    <p>El juego termina cuando el círculo queda vacío. Gana quien haya acumulado más canicas.</p>
+                    <h2>Reglas Básicas</h2>
+                    <ul>
+                        <li>No se vale mover la mano al disparar la canica.</li>
+                        <li>Si tu canica queda dentro del círculo, sigue en juego.</li>
+                        <li>Si sacas una canica del círculo, la ganas y tiras de nuevo.</li>
+                        <li>No se vale patear ni empujar las canicas con las manos.</li>
+                        <li>Si tu canica sale del área de juego, pierdes el turno.</li>
+                    </ul>
+                    <h2>Nombres en Diferentes Países</h2>
+                    <ul>
+                        <li><strong>México:</strong> Canicas</li>
+                        <li><strong>España:</strong> Canicas o Bolas</li>
+                        <li><strong>Argentina:</strong> Metras</li>
+                        <li><strong>Colombia:</strong> Canicas o Chiras</li>
+                        <li><strong>Chile:</strong> Bolas o Metras</li>
+                        <li><strong>Venezuela:</strong> Metras</li>
+                        <li><strong>Perú:</strong> Bolas o Canicas</li>
+                        <li><strong>Cuba:</strong> Bolas</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="columna-derecha">
+                <div class="recuadro-derecha">
+                    <h2>Datos Importantes</h2>
+                    <p><strong>👥 Jugadores:</strong> De 2 a 5 participantes.</p>
+                    <p><strong>⏱️ Duración:</strong> Cada partida 10-30 min.</p>
+                    <p><strong>🎯 Objetivo:</strong> Sacar del círculo la mayor cantidad de canicas.</p>
+                    <p><strong>🧰 Materiales:</strong> Canicas y tiza para el círculo.</p>
+                    <h2>Tips para Ganar</h2>
+                    <p><strong>• Buena postura:</strong> Apoya bien la mano.</p>
+                    <p><strong>• Apunta al centro:</strong> Dispara al grupo.</p>
+                    <p><strong>• Canica tiradora:</strong> Usa una más pesada.</p>
+                </div>
+                <div class="canicas-caja">
+                    <h2 class="canicas-titulo">🔴 Tiro al Blanco</h2>
+                    <p class="canicas-subtitulo">Haz clic en las canicas para sacarlas del círculo. ¡Atrapa todas!</p>
+                    <div class="canicas-marcador">
+                        <div>🎯 <span id="canicasPuntos">0</span> canicas</div>
+                        <div>⏱️ <span id="canicasTiempo">0</span>s</div>
+                    </div>
+                    <div class="canicas-escenario" id="canicasEscenario">
+                        <div class="canicas-circulo"></div>
+                    </div>
+                    <div class="canicas-mensaje" id="canicasMensaje">¡Pulsa iniciar para jugar!</div>
+                    <button class="canicas-boton" id="canicasIniciar">▶ Iniciar</button>
+                </div>
+            </div>
+        </div>
+        <div class="contenedor-boton"><a href="jugar.html" class="boton-regresar">Atrás</a></div>
+    </div>
+    <script>
+    (function(){
+        const esc=document.getElementById('canicasEscenario'),msg=document.getElementById('canicasMensaje'),puntosEl=document.getElementById('canicasPuntos'),tiempoEl=document.getElementById('canicasTiempo'),btn=document.getElementById('canicasIniciar');
+        const colores=['roja','azul','verde','amarilla'];
+        let jugando=false,puntos=0,tiempo=0,intervalo=null,spawn=null;
+        function crearCanica(){
+            if(!jugando)return;
+            const c=document.createElement('div');c.className='canica '+colores[Math.floor(Math.random()*colores.length)];
+            const maxX=esc.clientWidth-30,maxY=esc.clientHeight-30;
+            c.style.left=Math.random()*maxX+'px';c.style.top=Math.random()*maxY+'px';
+            c.addEventListener('click',()=>{if(!jugando)return;puntos++;puntosEl.textContent=puntos;c.remove();});
+            esc.appendChild(c);
+            setTimeout(()=>{if(c.parentNode)c.remove();},1500);
+        }
+        function iniciar(){
+            if(jugando)return;jugando=true;puntos=0;tiempo=0;puntosEl.textContent=0;tiempoEl.textContent=0;msg.textContent='¡Haz clic en las canicas!';
+            esc.querySelectorAll('.canica').forEach(c=>c.remove());
+            for(let i=0;i<5;i++)crearCanica();
+            spawn=setInterval(crearCanica,900);
+            intervalo=setInterval(()=>{tiempo++;tiempoEl.textContent=tiempo;},1000);
+        }
+        function detener(){jugando=false;clearInterval(intervalo);clearInterval(spawn);esc.querySelectorAll('.canica').forEach(c=>c.remove());}
+        btn.addEventListener('click',()=>{detener();iniciar();});
+    })();
+    </script>
+</body>
+</html>

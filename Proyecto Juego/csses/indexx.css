@@ -1,0 +1,222 @@
+/* =========================================================
+   ESTILOS GENERALES
+   ========================================================= */
+body {
+    background: linear-gradient(#001f3f, #0074d9, #ffffff);
+    font-family: "Lucida Handwriting", cursive;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    margin: 0;
+    overflow-x: hidden; /* evita scroll horizontal en móvil */
+}
+
+/* =========================================================
+   NUBES (escritorio)
+   ========================================================= */
+.nube1, .nube2, .nube3, .nube4, .nube5 {
+    position: relative;
+    width: 200px;
+    height: 100px;
+}
+
+.nube1 { margin-top: 20px;  margin-left: 50px;  }
+.nube2 { margin-top: 60px;  margin-left: 200px; }
+.nube3 { margin-top: -206px; margin-left: 460px; }
+.nube4 { margin-top: 30px;  margin-left: 700px; }
+.nube5 { margin-top: -260px; margin-left: 920px; }
+
+.circulo1, .circulo2, .circulo3, .circulo4, .circulo5 {
+    background-color: #ffffff;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.circulo1.grande      { width: 110px; height: 98px; bottom: 0; left: 40px; }
+.circulo1.mediano-izq { width: 69px;  height: 73px; bottom: 0; left: 0;    }
+.circulo1.mediano-der { width: 86px;  height: 70px; bottom: 0; right: 0;   }
+
+.circulo2.grande      { width: 114px; height: 98px; bottom: 0; left: 40px; }
+.circulo2.mediano-izq { width: 98px;  height: 73px; bottom: 0; left: 0;    }
+.circulo2.mediano-der { width: 98px;  height: 70px; bottom: 0; right: 0;   }
+
+.circulo3.grande      { width: 110px; height: 80px; bottom: 0; left: 40px; }
+.circulo3.mediano-izq { width: 89px;  height: 99px; bottom: 0; left: 0;    }
+.circulo3.mediano-der { width: 88px;  height: 55px; bottom: 0; right: 0;   }
+
+.circulo4.grande      { width: 96px;  height: 90px; bottom: 0; left: 40px; }
+.circulo4.mediano-izq { width: 69px;  height: 67px; bottom: 0; left: 0;    }
+.circulo4.mediano-der { width: 90px;  height: 70px; bottom: 0; right: 0;   }
+
+.circulo5.grande      { width: 100px; height: 98px; bottom: 0; left: 40px; }
+.circulo5.mediano-izq { width: 90px;  height: 73px; bottom: 0; left: 0;    }
+.circulo5.mediano-der { width: 90px;  height: 70px; bottom: 0; right: 0;   }
+
+/* =========================================================
+   TÍTULOS (escritorio)
+   ========================================================= */
+.titulo-palpitante1 {
+    position: absolute;
+    top: 130px;
+    left: 680px;
+    margin: 0;
+    color: #f3056c;
+    font-size: 3rem;
+    font-weight: bold;
+    animation: latido 3s ease-in-out infinite;
+    will-change: transform;
+}
+
+.titulo-palpitante2 {
+    position: absolute;
+    top: 235px;
+    left: 440px;
+    margin: 0;
+    color: #f8d303;
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    animation: latido 3s ease-in-out infinite;
+    will-change: transform;
+}
+
+@keyframes latido {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* =========================================================
+   BOTONES (escritorio)
+   ========================================================= */
+.boton-lego2 { top: 220px; left: 300px; margin: 0; }
+.boton-lego3 { top: 300px; left: 326px; margin: 0; }
+.boton-lego4 { top: 300px; left: 290px; margin: 0; }
+
+.boton-lego {
+    position: relative;
+    background-color: #12ffef;
+    color: #045889;
+    font-family: 'Arial Black', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 5px 0 #42056a;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.boton-lego:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2), 0 5px 0 #42056a;
+}
+
+/* =========================================================
+   IMÁGENES ESQUINAS (escritorio)
+   ========================================================= */
+.esquina-inferior-derecha,
+.esquina-inferior-izquierda,
+.esquina-inferior-centro {
+    position: fixed;
+    bottom: 0;
+    width: 289px;
+    height: auto;
+    z-index: 1000;
+}
+
+.esquina-inferior-derecha   { right: 0; }
+.esquina-inferior-izquierda { left: 0;  }
+.esquina-inferior-centro    { left: -70px; right: 0; margin: 0 auto; width: 100px; }
+
+/* =========================================================
+   RESPONSIVE — TABLET (hasta 900px)
+   ========================================================= */
+@media (max-width: 900px) {
+    /* Quitamos el posicionamiento absoluto y usamos flujo normal */
+    .titulo-palpitante1,
+    .titulo-palpitante2 {
+        position: static;
+        text-align: center;
+        margin: 10px auto;
+    }
+
+    .titulo-palpitante1 { font-size: 2.2rem; }
+    .titulo-palpitante2 { font-size: 3rem; margin-bottom: 20px; }
+
+    /* Botones en columna, centrados */
+    body > a {
+        display: block;
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .boton-lego {
+        position: static;
+        display: inline-block;
+        font-size: 1rem;
+        padding: 12px 28px;
+    }
+
+    .boton-lego2,
+    .boton-lego3,
+    .boton-lego4 {
+        top: auto;
+        left: auto;
+        margin: 0;
+    }
+
+    /* Nubes: las ocultamos en pantallas pequeñas para que no estorben */
+    .pantalla-completa,
+    .nube5 {
+        display: none;
+    }
+
+    /* Imágenes decorativas más pequeñas */
+    .esquina-inferior-derecha,
+    .esquina-inferior-izquierda,
+    .esquina-inferior-centro {
+        width: 140px;
+    }
+
+    .esquina-inferior-centro {
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+    }
+    .contenedor-botones {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin: 20px 0;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE — MÓVIL (hasta 480px)
+   ========================================================= */
+@media (max-width: 480px) {
+    body {
+        height: auto;
+        min-height: 100vh;
+        padding: 20px 10px 120px; /* espacio abajo para las imágenes */
+    }
+
+    .titulo-palpitante1 { font-size: 1.6rem; }
+    .titulo-palpitante2 { font-size: 2.2rem; margin-bottom: 15px; }
+
+    .boton-lego {
+        font-size: 0.9rem;
+        padding: 10px 22px;
+        letter-spacing: 1px;
+    }
+
+    .esquina-inferior-derecha,
+    .esquina-inferior-izquierda,
+    .esquina-inferior-centro {
+        width: 90px;
+    }
+}
